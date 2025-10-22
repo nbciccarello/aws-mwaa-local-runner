@@ -12,24 +12,28 @@ services:
         max-file: "3"
     volumes:
       - "${PWD}/db-data:/var/lib/postgresql/data"
-
+    ports:
+      - "5433:5432"
   local-runner:
-    image: amazon/mwaa-local:2_10_3
+    image: amazon/mwaa-local:2_10
     restart: always
     depends_on:
       - postgres
     environment:
       - LOAD_EX=n
       - EXECUTOR=Local
+      - AWS_PROFILE=fdev
+      - AWS_REGION=us-west-2
     logging:
       options:
         max-size: 10m
         max-file: "3"
     volumes:
-      - "${PWD}/dags:/usr/local/airflow/dags"
-      - "${PWD}/plugins:/usr/local/airflow/plugins"
-      - "${PWD}/requirements:/usr/local/airflow/requirements"
-      - "${PWD}/startup_script:/usr/local/airflow/startup"
+      - "~/.aws:/usr/local/airflow/.aws"
+      - "/Users/206632367/Documents/workspace/bbcloud/dataeng_datawarehouse/dags:/usr/local/airflow/dags"
+      - "/Users/206632367/Documents/workspace/bbcloud/dataeng_datawarehouse/plugins:/usr/local/airflow/plugins"
+      - "/Users/206632367/Documents/workspace/bbcloud/dataeng_datawarehouse/requirements:/usr/local/airflow/requirements"
+      - "/Users/206632367/Documents/workspace/bbcloud/dataeng_datawarehouse/startup_script:/usr/local/airflow/startup"
     ports:
       - "8080:8080"
     command: local-runner
