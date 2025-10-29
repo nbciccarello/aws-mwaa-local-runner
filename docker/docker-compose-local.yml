@@ -31,10 +31,10 @@ services:
         max-file: "3"
     volumes:
       - "~/.aws:/usr/local/airflow/.aws"
-      - "/Users/206632367/Documents/workspace/bbcloud/dataeng_datawarehouse/dags:/usr/local/airflow/dags"
-      - "/Users/206632367/Documents/workspace/bbcloud/dataeng_datawarehouse/plugins:/usr/local/airflow/plugins"
-      - "/Users/206632367/Documents/workspace/bbcloud/dataeng_datawarehouse/requirements:/usr/local/airflow/requirements"
-      - "/Users/206632367/Documents/workspace/bbcloud/dataeng_datawarehouse/startup_script:/usr/local/airflow/startup"
+      - "/Users/206793186@BWT3.COM/Documents/GitHub/dataeng_datawarehouse/dags:/usr/local/airflow/dags"
+      - "/Users/206793186@BWT3.COM/Documents/GitHub/dataeng_datawarehouse/plugins:/usr/local/airflow/plugins"
+      - "/Users/206793186@BWT3.COM/Documents/GitHub/dataeng_datawarehouse/requirements:/usr/local/airflow/requirements"
+      - "/Users/206793186@BWT3.COM/Documents/GitHub/dataeng_datawarehouse/startup_script:/usr/local/airflow/startup"
     ports:
       - "8080:8080"
     command: local-runner
